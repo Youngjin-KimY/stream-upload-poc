@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+      "target": "ES2015",
+      "lib": ["ES2015", "DOM"],
+      "module": "ES6",
+      "outDir": "./static",
+      "allowJs": true,
+      "checkJs": false,
+      "strict": true,
+      "esModuleInterop": true
+    },
+    "include": ["src/**/*.ts"]
+}
+  
