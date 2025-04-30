@@ -1,2 +1,6 @@
 root*
 localhost*
+*.key
+*.pem
+*.csr
+*.srl
