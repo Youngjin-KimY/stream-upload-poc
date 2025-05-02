@@ -3,12 +3,14 @@ document.getElementById('uploadBtn')!.addEventListener('click', async () => {
     
     const fileInput = document.getElementById('fileInput') as HTMLInputElement;
     const file: File | null = fileInput.files?.[0] ?? null;
+    console.log(fileInput.files)
     if(!file) {
         alert('No file selected');
         return;
     }
 
-    const totalsize:number = file.size;
+    const totalsize: number = file.size;
+    console.log(`total_size: ${totalsize}`);
     let uploaded: number = 0;
 
     const stream: ReadableStream<Uint8Array> = file.stream();
@@ -17,13 +19,16 @@ document.getElementById('uploadBtn')!.addEventListener('click', async () => {
     const uploadStream = new ReadableStream<Uint8Array>({
         async pull(controller) {
             const { done, value } = await reader.read();
+            console.log(`done: ${done}`);
             if (done) {
                 controller.close();
+                console.log(`real done`)
             }
 
             if (value) {
                 uploaded += value.length;
                 updateProgress(uploaded, totalsize);
+                controller.enqueue(value)
             }
         }
     });

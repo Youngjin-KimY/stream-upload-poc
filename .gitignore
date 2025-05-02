@@ -4,3 +4,5 @@ localhost*
 *.pem
 *.csr
 *.srl
+/hdd/*
+static/upload.js
